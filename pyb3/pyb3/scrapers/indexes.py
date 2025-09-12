@@ -1,6 +1,6 @@
 """Indexes scraper for B3 data.
 
-This module provides functions to retrieve and process index data from B3.
+This module prov`ides functions to retrieve and process index data from B3.
 """
 
 import os
