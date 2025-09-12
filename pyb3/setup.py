@@ -8,7 +8,7 @@ setup(
     description="Download and parse public data released by B3 Exchange",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/ropensci/pyb3",
+    url="https://github.com/PedroDnT/ybovevespa",
     packages=find_packages(),
     python_requires=">=3.8",
     install_requires=[

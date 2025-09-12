@@ -21,7 +21,11 @@ def to_int(value):
     """
     if pd.isna(value) or value == "":
         return None
-    return int(value)
+    try:
+        return int(value)
+    except ValueError:
+        # Try to convert to float first, then to int
+        return int(float(value))
 
 def to_float(value):
     """Convert a value to float.

@@ -11,7 +11,7 @@ import numpy as np
 
 from pyb3 import get_cache_dir, set_cache_dir
 from pyb3.template import load_template_from_file, get_templates_dir
-from pyb3.types import to_date, to_float, to_int, month_code_to_number
+from pyb3.types import to_date, to_float, to_int, code2month
 
 
 class TestCore(unittest.TestCase):
@@ -73,20 +73,20 @@ class TestCore(unittest.TestCase):
     
     def test_month_code_conversion(self):
         """Test month code conversion functions."""
-        # Test month_code_to_number
-        self.assertEqual(month_code_to_number('F'), 1)  # January
-        self.assertEqual(month_code_to_number('G'), 2)  # February
-        self.assertEqual(month_code_to_number('H'), 3)  # March
-        self.assertEqual(month_code_to_number('J'), 4)  # April
-        self.assertEqual(month_code_to_number('K'), 5)  # May
-        self.assertEqual(month_code_to_number('M'), 6)  # June
-        self.assertEqual(month_code_to_number('N'), 7)  # July
-        self.assertEqual(month_code_to_number('Q'), 8)  # August
-        self.assertEqual(month_code_to_number('U'), 9)  # September
-        self.assertEqual(month_code_to_number('V'), 10)  # October
-        self.assertEqual(month_code_to_number('X'), 11)  # November
-        self.assertEqual(month_code_to_number('Z'), 12)  # December
-        self.assertIsNone(month_code_to_number('A'))  # Invalid code
+        # Test code2month
+        self.assertEqual(code2month('F'), 1)  # January
+        self.assertEqual(code2month('G'), 2)  # February
+        self.assertEqual(code2month('H'), 3)  # March
+        self.assertEqual(code2month('J'), 4)  # April
+        self.assertEqual(code2month('K'), 5)  # May
+        self.assertEqual(code2month('M'), 6)  # June
+        self.assertEqual(code2month('N'), 7)  # July
+        self.assertEqual(code2month('Q'), 8)  # August
+        self.assertEqual(code2month('U'), 9)  # September
+        self.assertEqual(code2month('V'), 10)  # October
+        self.assertEqual(code2month('X'), 11)  # November
+        self.assertEqual(code2month('Z'), 12)  # December
+        self.assertIsNone(code2month('A'))  # Invalid code
 
 
 class TestTemplate(unittest.TestCase):
