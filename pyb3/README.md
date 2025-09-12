@@ -21,7 +21,7 @@ The package uses webscraping tools to obtain data directly from [B3's website](h
 pip install pyb3
 
 # Development version from GitHub
-pip install git+https://github.com/ropensci/pyb3.git
+pip install git+https://github.com/PedroDnT/ybovevespa.git
 ```
 ## Basic Usage
 
