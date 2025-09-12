@@ -1,0 +1,38 @@
+name: indexes_composition
+description: Indexes composition from B3
+fields:
+  - name: index
+    type: string
+    description: Index code
+  - name: code
+    type: string
+    description: Stock code
+  - name: company
+    type: string
+    description: Company name
+  - name: type
+    type: string
+    description: Stock type
+  - name: weight
+    type: float
+    description: Weight in the index
+
+parts:
+  - name: composition
+    fields: [index, code, company, type, weight]
+
+readers:
+  - name: indexes_composition_reader
+    function: read_indexes_composition
+  - name: indexes_portfolio_reader
+    function: read_indexes_portfolio
+
+downloaders:
+  - name: indexes_composition_downloader
+    function: download_indexes_composition
+    url: https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-amplos/
+    method: GET
+  - name: indexes_portfolio_downloader
+    function: download_indexes_portfolio
+    url: https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-amplos/indice-{index}-composicao-da-carteira.htm
+    method: GET

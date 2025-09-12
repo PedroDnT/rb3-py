@@ -1,0 +1,11 @@
+pandas
+numpy
+requests
+pyyaml
+pyarrow
+beautifulsoup4
+lxml
+python-dateutil
+pytz
+tqdm
+sqlalchemy

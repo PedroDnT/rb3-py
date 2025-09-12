@@ -1,0 +1,40 @@
+name: reference_rates
+description: Reference rates (yield curves) from B3
+fields:
+  - name: refdate
+    type: date
+    description: Reference date
+  - name: curve_name
+    type: string
+    description: Curve name (PRE, DIC, DOC)
+  - name: days
+    type: int
+    description: Days to maturity
+  - name: forward_date
+    type: date
+    description: Forward date
+  - name: r_252
+    type: float
+    description: Interest rate (252 business days)
+
+parts:
+  - name: yc
+    fields: [refdate, curve_name, days, forward_date, r_252]
+
+readers:
+  - name: reference_rates_reader
+    function: read_reference_rates
+
+downloaders:
+  - name: reference_rates_pre_downloader
+    function: download_reference_rates_pre
+    url: https://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-taxas-referenciais-ptBR.asp
+    method: GET
+  - name: reference_rates_dic_downloader
+    function: download_reference_rates_dic
+    url: https://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-taxas-referenciais-di-ptBR.asp
+    method: GET
+  - name: reference_rates_doc_downloader
+    function: download_reference_rates_doc
+    url: https://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-taxas-referenciais-igpm-ptBR.asp
+    method: GET

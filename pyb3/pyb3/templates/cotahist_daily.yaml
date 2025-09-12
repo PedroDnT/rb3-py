@@ -1,0 +1,96 @@
+name: cotahist_daily
+description: Daily COTAHIST file from B3
+fields:
+  - name: tipreg
+    type: string
+    description: Record type
+  - name: refdate
+    type: date
+    description: Reference date
+  - name: codbdi
+    type: string
+    description: BDI code
+  - name: symbol
+    type: string
+    description: Trading symbol
+  - name: tpmerc
+    type: int
+    description: Market type
+  - name: name
+    type: string
+    description: Short name
+  - name: especi
+    type: string
+    description: Specification
+  - name: prazot
+    type: string
+    description: Term in days
+  - name: modref
+    type: string
+    description: Reference currency
+  - name: open
+    type: float
+    description: Opening price
+  - name: high
+    type: float
+    description: Highest price
+  - name: low
+    type: float
+    description: Lowest price
+  - name: average
+    type: float
+    description: Average price
+  - name: close
+    type: float
+    description: Closing price
+  - name: bid
+    type: float
+    description: Best bid price
+  - name: ask
+    type: float
+    description: Best ask price
+  - name: trades
+    type: int
+    description: Number of trades
+  - name: quantity
+    type: int
+    description: Total quantity
+  - name: volume
+    type: float
+    description: Total volume
+  - name: strike
+    type: float
+    description: Strike price
+  - name: indopc
+    type: string
+    description: Price correction indicator
+  - name: maturity
+    type: date
+    description: Maturity date
+  - name: fatcot
+    type: float
+    description: Quotation factor
+  - name: ptoexe
+    type: float
+    description: Exercise point
+  - name: isin
+    type: string
+    description: ISIN code
+  - name: dismes
+    type: int
+    description: Distribution number
+
+parts:
+  - name: cotahist
+    fields: [tipreg, refdate, codbdi, symbol, tpmerc, name, especi, prazot, modref, open, high, low, average, close, bid, ask, trades, quantity, volume, strike, indopc, maturity, fatcot, ptoexe, isin, dismes]
+
+readers:
+  - name: cotahist_reader
+    function: read_cotahist_file
+
+downloaders:
+  - name: cotahist_daily_downloader
+    function: download_cotahist_daily
+    url: https://www.b3.com.br/dados/servicos/market-data/historico/mercado-a-vista/cotacoes-historicas/arquivos-cotacoes-historicas/{date_str}.zip
+    method: GET
+    date_format: '%d%m%Y'
