@@ -40,13 +40,12 @@ print("\nTemplate retrieval example:")
 template = pyb3.template_retrieve('cotahist_daily')
 print(f"Template ID: {template.id}")
 print(f"Template description: {template.description}")
-print(f"Number of fields: {len(template.fields) if template.fields else 0}")
 
-# Print template fields
-if template.fields:
-    print("\nTemplate fields:")
-    for field in template.fields:
-        print(f"- {field.name}: {field.type}")
+# Print template parts
+if template.parts:
+    print("\nTemplate parts:")
+    for part in template.parts:
+        print(f"- {part.get('name', 'Unknown')}")
 
 # Example of directory structure
 print("\nDirectory structure:")
