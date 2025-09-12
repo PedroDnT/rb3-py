@@ -1,0 +1,35 @@
+name: futures_settlement_prices
+description: Futures settlement prices from B3
+fields:
+  - name: refdate
+    type: date
+    description: Reference date
+  - name: ticker
+    type: string
+    description: Ticker symbol
+  - name: maturity
+    type: string
+    description: Maturity code
+  - name: maturity_code
+    type: string
+    description: Maturity code in format M/YY
+  - name: settlement_price
+    type: float
+    description: Settlement price
+  - name: variation
+    type: float
+    description: Variation from previous day
+
+parts:
+  - name: futures
+    fields: [refdate, ticker, maturity, maturity_code, settlement_price, variation]
+
+readers:
+  - name: futures_reader
+    function: read_futures_settlement_prices
+
+downloaders:
+  - name: futures_settlement_prices_downloader
+    function: download_futures_settlement_prices
+    url: https://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-ajustes-do-pregao-ptBR.asp
+    method: GET

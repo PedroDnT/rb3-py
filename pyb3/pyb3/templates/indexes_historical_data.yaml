@@ -1,0 +1,38 @@
+name: indexes_historical_data
+description: Historical indexes data from B3
+fields:
+  - name: index
+    type: string
+    description: Index code
+  - name: date
+    type: date
+    description: Reference date
+  - name: open
+    type: float
+    description: Opening value
+  - name: high
+    type: float
+    description: Highest value
+  - name: low
+    type: float
+    description: Lowest value
+  - name: close
+    type: float
+    description: Closing value
+  - name: volume
+    type: float
+    description: Trading volume
+
+parts:
+  - name: historical
+    fields: [index, date, open, high, low, close, volume]
+
+readers:
+  - name: indexes_historical_reader
+    function: read_indexes_historical_data
+
+downloaders:
+  - name: indexes_historical_downloader
+    function: download_indexes_historical
+    url: https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-amplos/indice-{index}-ibovespa-estatisticas-historicas.htm
+    method: GET
