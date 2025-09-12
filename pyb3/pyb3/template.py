@@ -58,7 +58,10 @@ def load_template_from_file(filename):
     
     # Load fields
     if 'fields' in data:
-        field_defs = [{'name': name, 'type': type_name} for name, type_name in data['fields'].items()]
+        if isinstance(data['fields'], list):
+            field_defs = data['fields']
+        else:
+            field_defs = [{'name': name, 'type': type_name} for name, type_name in data['fields'].items()]
         template.fields = create_fields(field_defs)
     
     # Load parts
@@ -68,6 +71,14 @@ def load_template_from_file(filename):
     # Load reader
     if 'reader' in data:
         template.reader = data['reader']
+    elif 'readers' in data and len(data['readers']) > 0:
+        template.reader = data['readers'][0]
+        
+    # Load downloader
+    if 'downloader' in data:
+        template.downloader = data['downloader']
+    elif 'downloaders' in data and len(data['downloaders']) > 0:
+        template.downloader = data['downloaders'][0]
     
     # Load writers
     if 'writers' in data:
